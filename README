@@ -1,0 +1,16 @@
+### 安装包
+上传到服务器不需要上传node包，直接在服务器中 npm install
+
+### 运行后端代码
+    npm install
+    node app.js
+
+### 本地模式
+    1、更改端口监听 localhost:8100
+    2、设置debug = true;  app.js / index.js
+
+### 开发时调整端口
+    app.js 中监听的端口
+
+### 当前解析的域名
+    www.quan8.plus

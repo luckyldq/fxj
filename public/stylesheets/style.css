@@ -1,0 +1,241 @@
+html{
+  font-size: 16px;
+}
+body {
+  padding: 0;margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+@media screen and (max-width: 799px){
+  html{
+      font-size: 16px;
+  }
+}
+p,i{padding:0;margin:0;}
+ul,li,em{padding:0;margin:0;list-style: none;}
+i,em{font-style: normal;}
+a {
+  color: #00B7FF;text-decoration: none;
+}
+/* 两行省略号 */
+.line-elli{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  /* -webkit-box-align: center; */
+  -webkit-line-clamp:1;
+  /* -webkit-line-clamp:2; */
+  overflow: hidden;
+}
+.hide{
+  opacity: 0;
+}
+.none{
+  display: none;
+}
+.top-wrap{
+  min-height: 94.6vh;
+}
+.wrap{
+  width: 1200px;margin: 0 auto;
+}
+@media screen and (max-width:799px){
+  .wrap{width: 100%;}
+}
+.top{
+  display: flex;padding:26px 0;position: relative;
+}
+.top .left{
+  display:flex;align-items: center;
+}
+.top .left .logo{
+  width: 66px;height: 66px;
+}
+.top .left .logo img{
+  width: 100%;height: 100%;;
+}
+.top .left .logo-txt{
+  font-size: 16px;padding-left: 6px;
+}
+.top .left .logo-txt .l{
+  font-size: 18px;padding:10px 0 2px;
+}
+.top .left .logo-txt .s{
+  font-size: 13px;color: #aaaaaa;letter-spacing: 2px;
+}
+.top .right{
+  position: absolute;right: 0;bottom: 0px;
+}
+.top .right .wxcode{
+  width: 100px;height: 100px;
+}
+@media screen and (max-width: 799px){
+  .top{padding: 26px 12px;box-sizing: border-box;}
+  .top .right{right: 12px;}
+}
+@media screen and (max-width: 799px){
+  .top .right{display: none;}
+}
+/* 搜索框 */
+.sh-top{
+  position: relative;z-index: 1;padding: 16px 6px;
+}
+.sh-top .tip-txt{
+  color: #999;font-size: 15px;margin-bottom: 6px;
+}
+.sh-top .h-use{
+  position: absolute;right: 10px;top: 18px;color: #999;font-size: 12px;text-decoration: underline;
+}
+.weui-cell{
+  text-align: center;position: relative;overflow: hidden;display: block;
+}
+.weui-cell .weui-input{
+  line-height: 40px;height:40px;color: #363636;text-align: left;background: #fff;outline: none;
+  border: 1px solid #e05611;border-radius: 20px;width: 100%;box-sizing: border-box;position: relative;z-index: 1;font-size: 14px;padding:0 60px 0 20px;
+}
+.weui-cell .search_btn{
+  background: #f06520;color: #ffffff;width: 56px;line-height: 40px;letter-spacing: 3px;font-size: 16px;border-radius: 0 20px 20px 0;position: absolute;z-index: 10;right: 0;top: 0;
+}
+/* 搜索结果框 */
+.sear-res{
+  
+}
+.yh-info{
+  padding:18px;border-top: 1px dashed #e6e6e6;
+}
+.yh-info text{
+  display: block;font-size: 12px;line-height: 1.36em;margin-bottom: 0.66em;color:#181818;
+}
+.cp-box{
+  display: flex;align-items: center;border-bottom: 1px dashed #e6e6e6;padding-bottom: 18px;
+}
+.cp-box .copy-btn{
+  width: 100px;height: 36px;line-height: 32px;border: 1px solid #f3702f;border-radius:6px;font-size: 14px;color: #fff;margin:0 18px;background: #f3702f;
+}
+.cp-box .gd-by{
+  font-size: 12px;color: #a6a6a6;
+}
+/* 导航栏 */
+.nav{
+  width: 100%;background: #FF9966;margin-top: 6px;
+}
+.nav ul{
+  display: flex;align-items: center;font-size: 15px;padding:8px 0;
+}
+.nav li{
+  margin-right: 36px;letter-spacing: 2px;cursor: pointer;
+}
+.nav li a{
+  color: #ddd;
+}
+.nav li.on a{
+  color: #ffffff;font-weight: bold;
+}
+.nav li:hover a{
+  color:#eee;
+}
+@media screen and (max-width: 799px){
+  .nav li{
+    margin: 0;padding-left: 12px;font-size: 12px;
+  }
+}
+.goods-box{
+  padding: 16px 0;display: flex;flex-wrap: wrap;
+}
+.goods-box .item{
+  width: 25%;border: 4px solid #fff;box-sizing: border-box;
+}
+.goods-box .item .img-box{
+  width: 100%;overflow: hidden;border-radius: 2px;border: 1px solid #eee;box-sizing: border-box;
+}
+.goods-box .item img{
+  width: 100%;height: auto;min-height: 100%;
+}
+.goods-box .item .title{
+  font-size: 12px;color: #999;-webkit-line-clamp:2;margin: 6px 0;height: 32px;
+}
+.goods-box .item .info{
+  display: flex;justify-content: space-between;align-items: center;height: 36px;
+}
+.goods-box .item .info-l{
+  display: flex;color: #333333;align-items: baseline;flex: 1;overflow: hidden;
+}
+.goods-box .item .info-l .p{
+  color: #fc4d52;font-size: 18px;flex: 1;white-space: nowrap;
+}
+.goods-box .item .info-l .p em{
+  font-weight: bold;
+}
+.goods-box .item .info-l .p span{
+  font-size: 13px;color: #999;padding-left:6px;position: relative;top: -1px;
+}
+.goods-box .item .info-l .c{
+  font-size: 16px;background: url(/images/quan.png) no-repeat rgba(255,248,248,1);background-size: 100% 100%;padding: 2px 6px;color: #FC4D52;font-size: 12px;white-space: nowrap;
+}
+.goods-box .item .info-r{
+  background: #FF9966;width: 88px;text-align: center;color: #fff;line-height: 32px;border-radius: 44px;cursor: pointer;font-size: 13px;margin-left: 16px;
+}
+@media screen and (max-width:799px){
+  .goods-box .item{
+    width:50%;
+  }
+  .goods-box .item .img-box{
+    height: 186px;
+  }
+  .goods-box .item .info{
+    height: auto;display: block;
+  }
+  .goods-box .item .info-l{
+    width: 100%;
+  }
+  .goods-box .item .info-l .p i{
+    font-size: 15px;
+  }
+  .goods-box .item .info-l .p em{
+    font-size: 15px;
+  }
+  .goods-box .item .info-l .p span{
+    font-size: 12px;
+  }
+  .goods-box .item .info-r{
+    width: 100%;margin: 6px 0 0;
+  }
+}
+.btm-info{
+  width: 100%;display: none;
+  text-align: center;border-top: 1px dashed #eee;
+}
+.btm-info img{
+  width: 60%;height: auto;;
+}
+@media screen and (max-width:799px){
+  .btm-info{
+    display: block;
+  }
+}
+.btm{
+  background:#CCCCCC;padding: 16px;text-align: center;
+}
+.btm span{
+  color: #999;
+}
+.btm  .beian{
+  color: #666;
+}
+.btm  .beian:hover{
+  color: #333;
+}
+.popbox{
+  position: fixed;width: 100%;height: 100vh;display: none;justify-content: center;align-items: center;top: 0;left: 0;background: rgba(0, 0, 0, 0.76);z-index: 99;
+}
+.popbox .popbox_con{
+  width: 80%;background: #fff;z-index: 10;position: relative;border-radius: 3px;
+}
+.popbox .popbox_con .poptxt{
+  width: 80%;margin: 0 auto;font-size: 16px;text-align: center;padding: 16px 0;line-height: 1.6em;
+}
+.popbox .popbox_msk{
+  position: absolute;left: 0;top: 0;bottom: 0;right: 0;z-index: 1;
+}

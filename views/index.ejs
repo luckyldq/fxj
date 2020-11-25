@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>分享家--<%= subtit %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <div class="top-wrap">
+      <!-- 顶部logo -->
+      <div class="top wrap">
+        <div class="left">
+          <img class="logo" src="/images/fxj.png" alt="分享家">
+          <div class="logo-txt">
+              <p class="l">分享家</p>
+              <p class="s">分享生活，分享快乐</p>
+          </div>
+        </div>
+        <div class="right">
+          <img class="wxcode" src="/images/wxcode.jpg" alt="微信二维码">
+        </div>
+      </div>
+      <!-- 搜索框 -->
+      <div class="sh-top">
+        <div class="tip-txt">请输入淘宝链接：</div>
+        <div class="h-use">新手引导</div>
+        <div class="weui-cell weui-cell_input">
+          <input class="weui-input" id="searchTxt" value="" />
+          <div class="search_btn" id="searchBtn">搜券</div>
+        </div>
+      </div>
+
+      <!-- id 搜索结果框 -->
+      <div class="sear-res" id="searRes">
+        <!-- <div class="yh-info">
+          <p class="gd-name" selectable>{{goodInfo.title}}</p>
+          <p class="gd-shop" selectable>【店铺名】{{goodInfo.nick}}</p>
+          <p class="gd-price" selectable>【券后价】{{goodInfo.c_price}}元</p>
+          <p wx:if="{{goodInfo.cupon}}" class="gd-link" selectable>
+            【优惠券】{{goodInfo.cupon}}元
+          </p>
+          <p class="gd-link" selectable>【返红包】{{goodInfo.commission}}元</p>
+        </div>
+        <div class="cp-box">
+          <button class="copy-btn" bindtap="cyToken">复制淘口令</button>
+          <p class="gd-by">复制淘口令后，打开手机淘宝下单购买</p>
+        </div> -->
+      </div>
+      <!-- 关键字 搜索结果框 -->
+      <div class="goods-box" id="searResByTxt">
+      </div>
+      <!-- 导航栏 -->
+      <div class="nav">
+        <ul class="wrap">
+          <% navs.forEach(function(item){ %>
+            <li class="<%= item.id == pageNum ?'on':'' %>">
+              <a href="<%= '/goods/'+item.id+'.html' %>"><%= item.name %></a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+      <!-- 产品列表 -->
+      <div class="goods-box wrap <%= goods.length?'':'hide' %>">
+        <% goods.forEach(function(item){ %>
+        <div class="item">
+          <div class="img-box">
+            <img src="<%= item.gimg %>" alt="">
+          </div>
+          <div class="title line-elli">
+            <%= item.title%>
+          </div>
+          <div class="info">
+            <div class="info-l">
+              <div class="p"><i>￥</i><em><%= item.price %></em><span>券后</span></div>
+              <div class="c <%= item.cupon?'':'hide' %>"><%= item.cupon %> 元券</div>
+            </div>
+            <div class="info-r copy_tcode" data-clipboard-text="<%= item.tcode %>">
+              复制淘口令
+            </div>
+          </div>
+        </div>
+        <% }) %>
+        <!-- <div class="item">
+          <div class="img-box">
+            <img src="/images/logo.jpg" alt="">
+          </div>
+          <div class="title line-elli">
+            相比较第一种方法，使用这种方法，你可以在
+          </div>
+          <div class="info">
+            <div class="info-l">
+              <div class="p"><i>￥</i><em>16</em><span>券后</span></div>
+              <div class="c">100元券</div>
+            </div>
+            <div class="info-r">
+              复制文案
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="goods-box wrap" style = "<%= goods.length?'display: none;':'display: block;' %>">
+        暂时没有内容
+      </div>
+      <!-- 客服二维码 -->
+      <div class="btm-info">
+        <img class="wxcode" src="/images/wxcode.jpg" alt="微信二维码">
+      </div>
+    </div>
+    <!-- 底部信息 -->
+    <div class="btm">
+      <div class="wrap">
+        <span>©️2019 ldq-lucky</span>
+        <a class="beian" href="http://www.beian.miit.gov.cn" target="_blank">鄂ICP备19028412号</a>
+      </div>
+    </div>
+    <!-- 口令框 -->
+    <div id="tcodeBox" style="position: absolute;left:-999px;top:-9999px;"></div>
+    <!-- 提示弹窗 -->
+    <div class="popbox">
+      <div class="popbox_con">
+        <div class="poptxt cp_suc">复制成功</div>
+      </div>
+      <div class="popbox_msk"></div>
+    </div>
+    <script src="/javascripts/clipboard.min.js"></script>
+    <script>
+        let popbox = document.querySelector('.popbox');
+        let popboxMsk = popbox.querySelector('.popbox_msk');
+        let poptxt = popbox.querySelector('.poptxt');
+        let timer1;
+
+        let clipboard = new ClipboardJS('.copy_tcode');
+        clipboard.on('success', function(e) {
+          popbox.style.display = 'flex';
+          poptxt.innerHTML = '复制成功，打开淘宝';
+          timer1 = setTimeout(() => {
+            popbox.style.display = 'none';
+          }, 800);
+        });
+        clipboard.on('error', function(e) {
+          popbox.style.display = 'flex';
+          poptxt.innerHTML = '复制失败，扫码添加微信客服';
+          timer1 = setTimeout(() => {
+            popbox.style.display = 'none';
+          }, 800);
+        });
+
+        popboxMsk.onclick = function(){
+          popbox.style.display = 'none';
+          timer1 && clearTimeout(timer1);
+        }
+
+    </script>
+    <script src="/javascripts/zepto.js"></script>
+    <script src="/javascripts/index.js"></script>
+</body>
+</html>
